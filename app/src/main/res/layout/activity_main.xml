@@ -6,14 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_music"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@android:color/holo_red_light"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/purple_200">
+        <!--        For manual setup, but we use auto setup-->
+        <!--        <com.google.android.material.tabs.TabItem-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Song" />-->
+
+        <!--        <com.google.android.material.tabs.TabItem-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Song" />-->
+
+        <!--        <com.google.android.material.tabs.TabItem-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Song" />-->
+    </com.google.android.material.tabs.TabLayout>
+
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/rv_music"
+        android:id="@+id/vp_music"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tab_music" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
