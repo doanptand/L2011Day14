@@ -10,9 +10,10 @@ import com.ddona.day14.databinding.ActivityMainBinding
 import com.ddona.day14.fragment.AlbumFragment
 import com.ddona.day14.fragment.ArtistFragment
 import com.ddona.day14.fragment.SongFragment
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val titles = arrayOf("Song", "Album", "Artist")
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabMusic, binding.vpMusic) { tab, position ->
             tab.text = titles[position]
         }.attach()
+        binding.navMusic.setNavigationItemSelectedListener(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -44,6 +46,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        binding.drawerMusic.closeDrawer(GravityCompat.START)
+        return when (item.itemId) {
+            R.id.mn_song -> {
+                binding.vpMusic.setCurrentItem(0, true)
+                true
+            }
+            R.id.mn_album -> {
+                binding.vpMusic.setCurrentItem(1, true)
+                true
+            }
+            R.id.mn_artist -> {
+                binding.vpMusic.setCurrentItem(2, true)
+                true
+            }
+            else -> true
+        }
     }
 
 }
