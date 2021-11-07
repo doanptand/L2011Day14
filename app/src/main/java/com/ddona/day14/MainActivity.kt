@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             tab.text = titles[position]
         }.attach()
         binding.navMusic.setNavigationItemSelectedListener(this)
+        binding.dotsIndicator.setViewPager2(binding.vpMusic)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
