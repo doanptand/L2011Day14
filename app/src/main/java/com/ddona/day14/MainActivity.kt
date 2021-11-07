@@ -10,6 +10,8 @@ import com.ddona.day14.databinding.ActivityMainBinding
 import com.ddona.day14.fragment.AlbumFragment
 import com.ddona.day14.fragment.ArtistFragment
 import com.ddona.day14.fragment.SongFragment
+import com.ddona.day14.tranformer.CubeOutScalingTransformation
+import com.ddona.day14.tranformer.VerticalFlipTransformation
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }.attach()
         binding.navMusic.setNavigationItemSelectedListener(this)
         binding.dotsIndicator.setViewPager2(binding.vpMusic)
+//        binding.vpMusic.setPageTransformer(CubeOutScalingTransformation())
+        binding.vpMusic.setPageTransformer(VerticalFlipTransformation())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
