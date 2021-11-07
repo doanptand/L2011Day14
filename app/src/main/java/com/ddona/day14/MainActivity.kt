@@ -2,7 +2,9 @@ package com.ddona.day14
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import com.ddona.day14.adapter.MusicPagerAdapter
 import com.ddona.day14.databinding.ActivityMainBinding
 import com.ddona.day14.fragment.AlbumFragment
@@ -21,12 +23,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = MusicPagerAdapter(this)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
         binding.vpMusic.adapter = adapter
         //This for ViewPager one
 //        binding.tabMusic.setupWithViewPager(binding.vpMusic)
         TabLayoutMediator(binding.tabMusic, binding.vpMusic) { tab, position ->
             tab.text = titles[position]
         }.attach()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            return if (binding.drawerMusic.isDrawerOpen(GravityCompat.START)) {
+                binding.drawerMusic.closeDrawer(GravityCompat.START)
+                true
+            } else {
+                binding.drawerMusic.openDrawer(GravityCompat.START)
+                true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
